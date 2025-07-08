@@ -1,0 +1,64 @@
+{
+  "name": "platform-x-backend",
+  "version": "1.0.0",
+  "description": "Backend API pour Platform X - Une plateforme de développement moderne inspirée de Cursor, Emergent.sh et Lovable.dev",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "build": "echo 'No build step required for Node.js'",
+    "deploy": "npm run test && npm run start"
+  },
+  "keywords": [
+    "nodejs",
+    "express",
+    "api",
+    "platform-x",
+    "development-platform",
+    "real-time",
+    "jwt",
+    "authentication"
+  ],
+  "author": "Platform X Team",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "helmet": "^7.1.0",
+    "dotenv": "^16.3.1",
+    "jsonwebtoken": "^9.0.2",
+    "bcryptjs": "^2.4.3",
+    "express-rate-limit": "^7.1.5",
+    "express-validator": "^7.0.1",
+    "socket.io": "^4.7.4",
+    "prisma": "^5.7.1",
+    "@prisma/client": "^5.7.1",
+    "multer": "^1.4.5-lts.1",
+    "compression": "^1.7.4",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2",
+    "jest": "^29.7.0",
+    "supertest": "^6.3.3",
+    "eslint": "^8.55.0",
+    "@types/node": "^20.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-org/platform-x-backend.git"
+  },
+  "bugs": {
+    "url": "https://github.com/your-org/platform-x-backend/issues"
+  },
+  "homepage": "https://platform-x.dev"
+}
