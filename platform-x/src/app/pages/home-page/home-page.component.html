@@ -1,0 +1,137 @@
+<div class="home-page">
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-container">
+      <div class="hero-content">
+        <h1 class="hero-title">
+          La plateforme de développement 
+          <span class="gradient-text">nouvelle génération</span>
+        </h1>
+        <p class="hero-subtitle">
+          Combinez le meilleur de Cursor, Emergent.sh et Lovable.dev dans une seule plateforme révolutionnaire. 
+          Développez, collaborez et déployez avec une expérience utilisateur inégalée.
+        </p>
+        <div class="hero-actions">
+          <button mat-raised-button color="primary" class="cta-button primary" (click)="onGetStarted()">
+            <mat-icon>rocket_launch</mat-icon>
+            Commencer gratuitement
+          </button>
+          <button mat-stroked-button class="cta-button secondary" (click)="onLearnMore()">
+            <mat-icon>play_circle</mat-icon>
+            Voir la démo
+          </button>
+        </div>
+      </div>
+      
+      <div class="hero-visual">
+        <div class="floating-windows">
+          <div class="window-demo window-1">
+            <div class="window-header">
+              <div class="window-controls">
+                <span class="control close"></span>
+                <span class="control minimize"></span>
+                <span class="control maximize"></span>
+              </div>
+              <span class="window-title">Code Editor</span>
+            </div>
+            <div class="window-content">
+              <div class="code-line">function createAwesome() {</div>
+              <div class="code-line">  return "Platform X";</div>
+              <div class="code-line">}</div>
+            </div>
+          </div>
+          
+          <div class="window-demo window-2">
+            <div class="window-header">
+              <div class="window-controls">
+                <span class="control close"></span>
+                <span class="control minimize"></span>
+                <span class="control maximize"></span>
+              </div>
+              <span class="window-title">GitHub</span>
+            </div>
+            <div class="window-content">
+              <div class="github-item">
+                <mat-icon>check_circle</mat-icon>
+                <span>Feature implemented</span>
+              </div>
+              <div class="github-item">
+                <mat-icon>pending</mat-icon>
+                <span>Code review pending</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section id="features" class="features">
+    <div class="features-container">
+      <h2 class="section-title">Fonctionnalités qui révolutionnent le développement</h2>
+      
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <mat-icon>code</mat-icon>
+          </div>
+          <h3>Éditeur Intelligent</h3>
+          <p>Un éditeur de code avancé avec autocomplétion, refactoring et debugging intégrés.</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">
+            <mat-icon>window</mat-icon>
+          </div>
+          <h3>Fenêtres Dynamiques</h3>
+          <p>Système de fenêtres multiples inspiré d'Emergent.sh pour une productivité maximale.</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">
+            <mat-icon>group</mat-icon>
+          </div>
+          <h3>Collaboration Temps Réel</h3>
+          <p>Travaillez en équipe en temps réel avec synchronisation instantanée des changements.</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">
+            <mat-icon>cloud</mat-icon>
+          </div>
+          <h3>Déploiement Automatique</h3>
+          <p>Déployez vos applications en un clic vers vos plateformes préférées.</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">
+            <mat-icon>integration_instructions</mat-icon>
+          </div>
+          <h3>Intégrations GitHub</h3>
+          <p>Intégration native avec GitHub pour une gestion de version transparente.</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">
+            <mat-icon>security</mat-icon>
+          </div>
+          <h3>Sécurité Enterprise</h3>
+          <p>Chiffrement end-to-end et conformité aux standards de sécurité les plus élevés.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="cta-container">
+      <h2>Prêt à transformer votre expérience de développement ?</h2>
+      <p>Rejoignez des milliers de développeurs qui ont déjà fait le choix de Platform X</p>
+      <button mat-raised-button color="primary" class="cta-button large" (click)="onGetStarted()">
+        <mat-icon>rocket_launch</mat-icon>
+        Commencer maintenant - Gratuit
+      </button>
+    </div>
+  </section>
+</div>

@@ -1,0 +1,94 @@
+<footer class="footer bg-gray-50 border-t">
+  <div class="footer-container max-w-7xl mx-auto px-4 py-12">
+    
+    <!-- Main Footer Content -->
+    <div class="footer-content grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      
+      <!-- Company Info -->
+      <div class="footer-section">
+        <h3 class="footer-title">Platform X</h3>
+        <p class="footer-description">
+          La plateforme de développement nouvelle génération qui combine le meilleur de Cursor, Emergent.sh et Lovable.dev.
+        </p>
+        <div class="social-links flex gap-4 mt-4">
+          <button 
+            class="social-link"
+            (click)="onSocialClick('twitter')"
+            title="Twitter">
+            <mat-icon>public</mat-icon>
+          </button>
+          <button 
+            class="social-link"
+            (click)="onSocialClick('github')"
+            title="GitHub">
+            <mat-icon>code</mat-icon>
+          </button>
+          <button 
+            class="social-link"
+            (click)="onSocialClick('linkedin')"
+            title="LinkedIn">
+            <mat-icon>business</mat-icon>
+          </button>
+          <button 
+            class="social-link"
+            (click)="onSocialClick('discord')"
+            title="Discord">
+            <mat-icon>chat</mat-icon>
+          </button>
+        </div>
+      </div>
+
+      <!-- Product -->
+      <div class="footer-section">
+        <h4 class="footer-subtitle">Produit</h4>
+        <ul class="footer-links">
+          <li><a (click)="onLinkClick('features')" class="footer-link">Fonctionnalités</a></li>
+          <li><a (click)="onLinkClick('pricing')" class="footer-link">Tarifs</a></li>
+          <li><a (click)="onLinkClick('integrations')" class="footer-link">Intégrations</a></li>
+          <li><a (click)="onLinkClick('api')" class="footer-link">API</a></li>
+          <li><a (click)="onLinkClick('changelog')" class="footer-link">Changelog</a></li>
+        </ul>
+      </div>
+
+      <!-- Resources -->
+      <div class="footer-section">
+        <h4 class="footer-subtitle">Ressources</h4>
+        <ul class="footer-links">
+          <li><a (click)="onLinkClick('documentation')" class="footer-link">Documentation</a></li>
+          <li><a (click)="onLinkClick('tutorials')" class="footer-link">Tutoriels</a></li>
+          <li><a (click)="onLinkClick('examples')" class="footer-link">Exemples</a></li>
+          <li><a (click)="onLinkClick('blog')" class="footer-link">Blog</a></li>
+          <li><a (click)="onLinkClick('community')" class="footer-link">Communauté</a></li>
+        </ul>
+      </div>
+
+      <!-- Support -->
+      <div class="footer-section">
+        <h4 class="footer-subtitle">Support</h4>
+        <ul class="footer-links">
+          <li><a (click)="onLinkClick('help')" class="footer-link">Centre d'aide</a></li>
+          <li><a (click)="onLinkClick('contact')" class="footer-link">Contact</a></li>
+          <li><a (click)="onLinkClick('status')" class="footer-link">Statut</a></li>
+          <li><a (click)="onLinkClick('security')" class="footer-link">Sécurité</a></li>
+          <li><a (click)="onLinkClick('enterprise')" class="footer-link">Entreprise</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Footer Bottom -->
+    <div class="footer-bottom flex flex-col md:flex-row justify-between items-center mt-12 pt-8 border-t border-gray-200">
+      <div class="footer-legal flex flex-wrap gap-6 text-sm text-gray-600">
+        <a (click)="onLinkClick('privacy')" class="footer-link">Politique de confidentialité</a>
+        <a (click)="onLinkClick('terms')" class="footer-link">Conditions d'utilisation</a>
+        <a (click)="onLinkClick('cookies')" class="footer-link">Cookies</a>
+        <a (click)="onLinkClick('gdpr')" class="footer-link">RGPD</a>
+      </div>
+      
+      <div class="footer-signature mt-4 md:mt-0">
+        <p class="text-sm text-gray-600">
+          © {{ currentYear }} Platform X. Built with ❤️ by developers, for developers.
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>

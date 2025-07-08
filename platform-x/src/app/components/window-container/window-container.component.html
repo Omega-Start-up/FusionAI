@@ -1,0 +1,35 @@
+<div class="window-container">
+  <!-- Active Windows -->
+  <div class="windows-area">
+    <app-window
+      *ngFor="let window of windows; trackBy: trackByWindowId"
+      [window]="window"
+      (minimize)="onWindowMinimize($event)"
+      (maximize)="onWindowMaximize($event)"
+      (close)="onWindowClose($event)"
+      (move)="onWindowMove(window.id, $event)"
+      (resize)="onWindowResize(window.id, $event)"
+      (focus)="onWindowFocus($event)"
+      class="window-wrapper">
+    </app-window>
+  </div>
+
+  <!-- Taskbar for minimized windows -->
+  <div *ngIf="minimizedWindows.length > 0" class="taskbar">
+    <div class="taskbar-content">
+      <div class="minimized-windows">
+        <button
+          *ngFor="let window of minimizedWindows"
+          class="taskbar-button"
+          (click)="onRestoreWindow(window.id)"
+          [title]="window.title">
+          <mat-icon>{{ getWindowIcon(window.component) }}</mat-icon>
+          <span class="taskbar-button-title">{{ window.title }}</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Dynamic Component Container -->
+  <div #windowContainer class="dynamic-container"></div>
+</div>
