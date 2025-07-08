@@ -1,39 +1,31 @@
-import { Component, OnInit } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { CommonModule } from '@angular/common';
-
-import { AuthService } from './core/services/auth.service';
-import { WindowService } from './core/services/window.service';
-import { HeaderComponent } from './shared/components/header/header.component';
-import { FooterComponent } from './shared/components/footer/footer.component';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'fusion-root',
-  standalone: true,
-  imports: [
-    CommonModule,
-    RouterOutlet,
-    HeaderComponent,
-    FooterComponent
-  ],
   template: `
-    <div class="fusion-app" [class.authenticated]="authService.isAuthenticated()" [class.dark-theme]="isDarkTheme">
-      <!-- Header Navigation -->
-      <fusion-header></fusion-header>
+    <div class="fusion-app" [class.dark-theme]="isDarkTheme">
+      <!-- Navigation Header -->
+      <header class="fusion-header">
+        <div class="header-content">
+          <div class="brand">
+            <span class="brand-text">🚀 FusionAI</span>
+          </div>
+          <nav class="nav-links">
+            <a routerLink="/" routerLinkActive="active">Accueil</a>
+            <a routerLink="/auth/login" routerLinkActive="active">Connexion</a>
+          </nav>
+        </div>
+      </header>
       
       <!-- Main Content -->
-      <main class="main-content" [class.workspace-mode]="isWorkspaceMode()">
+      <main class="main-content">
         <router-outlet></router-outlet>
       </main>
       
-      <!-- Footer (only on public pages) -->
-      <fusion-footer *ngIf="!isWorkspaceMode()"></fusion-footer>
-      
-      <!-- Development Info (only in dev mode) -->
+      <!-- Development Info -->
       <div class="dev-info" *ngIf="isDevelopment">
         <p>🚀 FusionAI v{{ version }} - Mode Développement</p>
-        <p>Utilisateur: {{ authService.isAuthenticated() ? authService.getCurrentUser()?.name : 'Non connecté' }}</p>
-        <p>Fenêtres ouvertes: {{ windowService.getWindowCount() }}</p>
+        <p>Status: Ready</p>
       </div>
     </div>
   `,
@@ -111,65 +103,27 @@ import { FooterComponent } from './shared/components/footer/footer.component';
     }
   `]
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   version = '1.0.0';
-  isDevelopment = !this.environment.production;
-  isDarkTheme = true; // Default to dark theme
+  isDevelopment = true; // Set to false for production
+  isDarkTheme = true;
 
-  constructor(
-    public authService: AuthService,
-    public windowService: WindowService,
-    private environment: any = { production: false } // Temporary until environment is available
-  ) {}
-
-  ngOnInit(): void {
-    // Initialize theme based on user preferences
+  constructor() {
     this.initializeTheme();
-    
-    // Load user preferences if authenticated
-    if (this.authService.isAuthenticated()) {
-      this.loadUserPreferences();
-    }
   }
 
-  /**
-   * Check if we're in workspace mode (authenticated user)
-   */
-  isWorkspaceMode(): boolean {
-    return this.authService.isAuthenticated();
-  }
-
-  /**
-   * Initialize theme based on user preferences or system preference
-   */
   private initializeTheme(): void {
     const savedTheme = localStorage.getItem('fusion_theme');
     
     if (savedTheme) {
       this.isDarkTheme = savedTheme === 'dark';
     } else {
-      // Use system preference
       this.isDarkTheme = window.matchMedia('(prefers-color-scheme: dark)').matches;
     }
 
     this.applyTheme();
   }
 
-  /**
-   * Load user preferences if authenticated
-   */
-  private loadUserPreferences(): void {
-    const user = this.authService.getCurrentUser();
-    if (user?.preferences) {
-      this.isDarkTheme = user.preferences.theme === 'dark' || 
-                        (user.preferences.theme === 'auto' && this.isDarkTheme);
-      this.applyTheme();
-    }
-  }
-
-  /**
-   * Apply theme to document
-   */
   private applyTheme(): void {
     const htmlElement = document.documentElement;
     
@@ -181,15 +135,6 @@ export class AppComponent implements OnInit {
       htmlElement.classList.remove('dark-theme');
     }
 
-    // Save preference
     localStorage.setItem('fusion_theme', this.isDarkTheme ? 'dark' : 'light');
-  }
-
-  /**
-   * Toggle theme (for development/testing)
-   */
-  toggleTheme(): void {
-    this.isDarkTheme = !this.isDarkTheme;
-    this.applyTheme();
   }
 }

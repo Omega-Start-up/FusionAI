@@ -1,7 +1,7 @@
 import { Injectable, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { Observable, BehaviorSubject, map, tap, catchError, throwError } from 'rxjs';
+import { Observable, BehaviorSubject, of, map, tap, catchError, throwError } from 'rxjs';
 
 import { environment } from '@environments/environment';
 import { 
@@ -143,12 +143,9 @@ export class AuthService {
       });
     }
 
-    return this.http.post<ApiResponse>(`${this.apiUrl}/verify`, { token }).pipe(
+    return this.http.post<ApiResponse<{valid: boolean}>>(`${this.apiUrl}/verify`, { token }).pipe(
       map(response => response.data?.valid || false),
-      catchError(() => new Observable(observer => {
-        observer.next(false);
-        observer.complete();
-      }))
+      catchError(() => of(false))
     );
   }
 

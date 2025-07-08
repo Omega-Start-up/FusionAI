@@ -69,11 +69,11 @@ import { MatCardModule } from '@angular/material/card';
                 <div class="window-content">
                   <div class="code-line">
                     <span class="line-number">1</span>
-                    <span class="code">import {{ Component }} from '@angular/core';</span>
+                    <span class="code">import &#123; Component &#125; from '&#64;angular/core';</span>
                   </div>
                   <div class="code-line">
                     <span class="line-number">2</span>
-                    <span class="code">import {{ FusionAI }} from './fusion-ai';</span>
+                    <span class="code">import &#123; FusionAI &#125; from './fusion-ai';</span>
                   </div>
                   <div class="code-line highlighted">
                     <span class="line-number">3</span>
