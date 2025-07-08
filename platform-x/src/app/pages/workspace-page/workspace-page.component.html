@@ -1,0 +1,182 @@
+<div class="workspace-page">
+  <!-- Welcome Header -->
+  <div class="workspace-header">
+    <div class="welcome-section">
+      <h1 class="welcome-title">
+        Bon retour, {{ user?.name || 'Développeur' }} ! 👋
+      </h1>
+      <p class="welcome-subtitle">
+        Prêt à créer quelque chose d'extraordinaire aujourd'hui ?
+      </p>
+    </div>
+    
+    <div class="quick-actions">
+      <button mat-raised-button color="primary" (click)="createNewProject()">
+        <mat-icon>add</mat-icon>
+        Nouveau Projet
+      </button>
+      <button mat-stroked-button (click)="importProject()">
+        <mat-icon>download</mat-icon>
+        Importer
+      </button>
+    </div>
+  </div>
+
+  <!-- Dashboard Grid -->
+  <div class="dashboard-grid">
+    
+    <!-- Quick Launch -->
+    <div class="dashboard-card">
+      <h3 class="card-title">
+        <mat-icon>flash_on</mat-icon>
+        Lancement Rapide
+      </h3>
+      <div class="launch-buttons">
+        <button mat-button class="launch-btn" (click)="openCodeEditor()">
+          <mat-icon>code</mat-icon>
+          <div class="btn-content">
+            <span class="btn-title">Éditeur</span>
+            <span class="btn-subtitle">Commencer à coder</span>
+          </div>
+        </button>
+        
+        <button mat-button class="launch-btn" (click)="openGithubBrowser()">
+          <mat-icon>source</mat-icon>
+          <div class="btn-content">
+            <span class="btn-title">GitHub</span>
+            <span class="btn-subtitle">Parcourir repos</span>
+          </div>
+        </button>
+        
+        <button mat-button class="launch-btn" (click)="openDatabaseViewer()">
+          <mat-icon>storage</mat-icon>
+          <div class="btn-content">
+            <span class="btn-title">Database</span>
+            <span class="btn-subtitle">Gérer les données</span>
+          </div>
+        </button>
+        
+        <button mat-button class="launch-btn" (click)="openProjectManager()">
+          <mat-icon>folder</mat-icon>
+          <div class="btn-content">
+            <span class="btn-title">Projets</span>
+            <span class="btn-subtitle">Organiser le travail</span>
+          </div>
+        </button>
+      </div>
+    </div>
+
+    <!-- Recent Projects -->
+    <div class="dashboard-card">
+      <h3 class="card-title">
+        <mat-icon>history</mat-icon>
+        Projets Récents
+      </h3>
+      <div class="recent-projects">
+        <div class="project-item">
+          <div class="project-icon">
+            <mat-icon>web</mat-icon>
+          </div>
+          <div class="project-info">
+            <h4>E-commerce App</h4>
+            <p>Modifié il y a 2 heures</p>
+          </div>
+          <button mat-icon-button>
+            <mat-icon>open_in_new</mat-icon>
+          </button>
+        </div>
+        
+        <div class="project-item">
+          <div class="project-icon">
+            <mat-icon>phone_android</mat-icon>
+          </div>
+          <div class="project-info">
+            <h4>Mobile Dashboard</h4>
+            <p>Modifié hier</p>
+          </div>
+          <button mat-icon-button>
+            <mat-icon>open_in_new</mat-icon>
+          </button>
+        </div>
+        
+        <div class="project-item">
+          <div class="project-icon">
+            <mat-icon>api</mat-icon>
+          </div>
+          <div class="project-info">
+            <h4>API Gateway</h4>
+            <p>Modifié il y a 3 jours</p>
+          </div>
+          <button mat-icon-button>
+            <mat-icon>open_in_new</mat-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Activity Feed -->
+    <div class="dashboard-card">
+      <h3 class="card-title">
+        <mat-icon>notifications</mat-icon>
+        Activité Récente
+      </h3>
+      <div class="activity-feed">
+        <div class="activity-item">
+          <div class="activity-icon success">
+            <mat-icon>check_circle</mat-icon>
+          </div>
+          <div class="activity-content">
+            <p><strong>Déploiement réussi</strong></p>
+            <p class="activity-time">Il y a 30 minutes</p>
+          </div>
+        </div>
+        
+        <div class="activity-item">
+          <div class="activity-icon info">
+            <mat-icon>git_commit</mat-icon>
+          </div>
+          <div class="activity-content">
+            <p><strong>Nouveau commit</strong> sur main</p>
+            <p class="activity-time">Il y a 1 heure</p>
+          </div>
+        </div>
+        
+        <div class="activity-item">
+          <div class="activity-icon warning">
+            <mat-icon>warning</mat-icon>
+          </div>
+          <div class="activity-content">
+            <p><strong>Build failed</strong> sur develop</p>
+            <p class="activity-time">Il y a 2 heures</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stats -->
+    <div class="dashboard-card">
+      <h3 class="card-title">
+        <mat-icon>analytics</mat-icon>
+        Statistiques
+      </h3>
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-number">12</div>
+          <div class="stat-label">Projets Actifs</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">156</div>
+          <div class="stat-label">Commits ce mois</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">98%</div>
+          <div class="stat-label">Uptime</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">24</div>
+          <div class="stat-label">Déploiements</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
