@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="fr" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <title>FusionAI - Plateforme de Développement Moderne</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="FusionAI combine l'intelligence artificielle avec des outils de développement modernes pour révolutionner votre expérience de codage.">
+  <meta name="keywords" content="développement, IA, intelligence artificielle, code, programmation, Angular, TypeScript, plateforme">
+  <meta name="author" content="FusionAI Team">
+  <meta name="robots" content="index, follow">
+  
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="FusionAI - Plateforme de Développement Moderne">
+  <meta property="og:description" content="Révolutionnez votre développement avec l'intelligence artificielle intégrée">
+  <meta property="og:image" content="/assets/images/og-image.png">
+  <meta property="og:url" content="https://fusionai.dev">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="fr_FR">
+  
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="FusionAI - Plateforme de Développement Moderne">
+  <meta name="twitter:description" content="Révolutionnez votre développement avec l'intelligence artificielle intégrée">
+  <meta name="twitter:image" content="/assets/images/twitter-card.png">
+  <meta name="twitter:creator" content="@fusionai">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
+  
+  <!-- PWA Meta Tags -->
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#667eea">
+  <meta name="msapplication-TileColor" content="#667eea">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="FusionAI">
+  
+  <!-- Preconnect to improve performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  
+  <!-- Custom CSS Variables -->
+  <style>
+    :root {
+      /* Primary Colors */
+      --primary-color: #667eea;
+      --primary-light: #7c8df0;
+      --primary-dark: #5a6fd8;
+      
+      /* Accent Colors */
+      --accent-color: #ff6b6b;
+      --accent-light: #ff8a80;
+      --accent-dark: #e57373;
+      
+      /* Success & Error */
+      --success-color: #4caf50;
+      --warning-color: #ff9800;
+      --error-color: #f44336;
+      --info-color: #2196f3;
+      
+      /* Neutral Colors */
+      --white: #ffffff;
+      --black: #000000;
+      --grey-50: #fafafa;
+      --grey-100: #f5f5f5;
+      --grey-200: #eeeeee;
+      --grey-300: #e0e0e0;
+      --grey-400: #bdbdbd;
+      --grey-500: #9e9e9e;
+      --grey-600: #757575;
+      --grey-700: #616161;
+      --grey-800: #424242;
+      --grey-900: #212121;
+      
+      /* Typography */
+      --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-size-xs: 0.75rem;
+      --font-size-sm: 0.875rem;
+      --font-size-base: 1rem;
+      --font-size-lg: 1.125rem;
+      --font-size-xl: 1.25rem;
+      --font-size-2xl: 1.5rem;
+      --font-size-3xl: 1.875rem;
+      --font-size-4xl: 2.25rem;
+      
+      /* Spacing */
+      --spacing-xs: 0.25rem;
+      --spacing-sm: 0.5rem;
+      --spacing-md: 1rem;
+      --spacing-lg: 1.5rem;
+      --spacing-xl: 2rem;
+      --spacing-2xl: 3rem;
+      
+      /* Border Radius */
+      --border-radius-sm: 0.25rem;
+      --border-radius-md: 0.5rem;
+      --border-radius-lg: 0.75rem;
+      --border-radius-xl: 1rem;
+      
+      /* Shadows */
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+      --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+      
+      /* Transitions */
+      --transition-fast: 0.15s ease-in-out;
+      --transition-base: 0.3s ease-in-out;
+      --transition-slow: 0.5s ease-in-out;
+    }
+    
+    /* Dark theme variables */
+    [data-theme="dark"] {
+      --bg-primary: #121212;
+      --bg-secondary: #1e1e1e;
+      --bg-tertiary: #2d2d30;
+      --text-primary: #ffffff;
+      --text-secondary: #cccccc;
+      --text-tertiary: #999999;
+      --border-color: #3e3e42;
+      --workspace-bg: #1e1e1e;
+      --workspace-header-bg: #2d2d30;
+    }
+    
+    /* Light theme variables */
+    [data-theme="light"] {
+      --bg-primary: #ffffff;
+      --bg-secondary: #f8fafc;
+      --bg-tertiary: #f1f5f9;
+      --text-primary: #1a1a1a;
+      --text-secondary: #666666;
+      --text-tertiary: #999999;
+      --border-color: #e2e8f0;
+      --workspace-bg: #ffffff;
+      --workspace-header-bg: #f8fafc;
+    }
+    
+    /* Global Reset */
+    * {
+      box-sizing: border-box;
+    }
+    
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      font-family: var(--font-family);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    
+    body {
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      transition: background-color var(--transition-base), color var(--transition-base);
+    }
+    
+    /* Loading Spinner */
+    .loading-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--bg-primary);
+      z-index: 9999;
+    }
+    
+    .loading-spinner {
+      width: 40px;
+      height: 40px;
+      border: 3px solid var(--grey-300);
+      border-top: 3px solid var(--primary-color);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    /* Hide loading when Angular is ready */
+    fusion-root:not(:empty) + .loading-container {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <!-- Angular Application Root -->
+  <fusion-root></fusion-root>
+  
+  <!-- Loading Fallback -->
+  <div class="loading-container">
+    <div class="loading-spinner"></div>
+  </div>
+  
+  <!-- JavaScript disabled fallback -->
+  <noscript>
+    <div style="
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #ffffff;
+      color: #333333;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      z-index: 10000;
+    ">
+      <div>
+        <h1>JavaScript requis</h1>
+        <p>Cette application nécessite JavaScript pour fonctionner.<br>Veuillez l'activer dans votre navigateur.</p>
+      </div>
+    </div>
+  </noscript>
+</body>
+</html>
