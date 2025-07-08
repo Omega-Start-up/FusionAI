@@ -1,0 +1,137 @@
+version: '3.8'
+
+services:
+  # 🔷 Frontend Angular Service
+  frontend:
+    container_name: fusionai-frontend
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "4200:4200"
+    environment:
+      - NODE_ENV=development
+      - API_URL=http://backend:3000
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    depends_on:
+      - backend
+    networks:
+      - fusionai-network
+    restart: unless-stopped
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.frontend.rule=Host(`localhost`)"
+      - "traefik.http.services.frontend.loadbalancer.server.port=4200"
+
+  # 🔶 Backend Node.js Service
+  backend:
+    container_name: fusionai-backend
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+      - PORT=3000
+      - FRONTEND_URL=http://frontend:4200
+      - JWT_SECRET=dev-super-secret-jwt-key-for-development
+      - JWT_EXPIRES_IN=24h
+      - DATABASE_URL=postgresql://fusionai:password@postgres:5432/fusionai_db
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+      - uploads-data:/app/uploads
+    depends_on:
+      - postgres
+      - redis
+    networks:
+      - fusionai-network
+    restart: unless-stopped
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.backend.rule=Host(`api.localhost`)"
+      - "traefik.http.services.backend.loadbalancer.server.port=3000"
+
+  # 🗄️ PostgreSQL Database
+  postgres:
+    container_name: fusionai-postgres
+    image: postgres:15-alpine
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_DB=fusionai_db
+      - POSTGRES_USER=fusionai
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_INITDB_ARGS=--encoding=UTF-8 --lc-collate=C --lc-ctype=C
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+      - ./backend/database/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - fusionai-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U fusionai -d fusionai_db"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # 🔴 Redis Cache Service
+  redis:
+    container_name: fusionai-redis
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    command: redis-server --appendonly yes --requirepass redis-password
+    volumes:
+      - redis-data:/data
+    networks:
+      - fusionai-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "redis-cli", "--raw", "incr", "ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # 🌐 Reverse Proxy (Optional)
+  traefik:
+    container_name: fusionai-traefik
+    image: traefik:v2.10
+    command:
+      - "--api.insecure=true"
+      - "--providers.docker=true"
+      - "--providers.docker.exposedbydefault=false"
+      - "--entrypoints.web.address=:80"
+    ports:
+      - "80:80"
+      - "8080:8080"  # Traefik dashboard
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    networks:
+      - fusionai-network
+    restart: unless-stopped
+    profiles:
+      - proxy
+
+# 🔗 Networks
+networks:
+  fusionai-network:
+    driver: bridge
+    name: fusionai-network
+
+# 💾 Persistent Volumes
+volumes:
+  postgres-data:
+    driver: local
+    name: fusionai-postgres-data
+  
+  redis-data:
+    driver: local
+    name: fusionai-redis-data
+  
+  uploads-data:
+    driver: local
+    name: fusionai-uploads-data
