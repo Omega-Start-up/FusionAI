@@ -1,6 +1,7 @@
 export const environment = {
   production: false,
   apiUrl: 'http://localhost:3000/api',
+  wsUrl: 'ws://localhost:3001',
   appName: 'FusionAI',
   version: '1.0.0',
   debug: true,
@@ -45,5 +46,8 @@ export const environment = {
     maxFilesPerUpload: 5,
     maxProjectNameLength: 100,
     maxDescriptionLength: 500
-  }
+  },
+  
+  // PWA Configuration
+  vapidPublicKey: 'your-vapid-public-key-here'
 };
