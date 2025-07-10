@@ -39,23 +39,25 @@ const routes: Routes = [
     pathMatch: 'full'
   },
 
-  // === AUTHENTIFICATION (À implémenter) ===
+  // === AUTHENTIFICATION (Modules Feature) ===
   {
-    path: 'auth/login',
+    path: 'auth',
     canActivate: [PublicGuard],
-    loadComponent: () => import('./pages/not-found/not-found.component').then(m => m.NotFoundComponent)
-  },
-  {
-    path: 'auth/register',
-    canActivate: [PublicGuard],
-    loadComponent: () => import('./pages/not-found/not-found.component').then(m => m.NotFoundComponent)
+    loadChildren: () => import('./features/auth/auth.module').then(m => m.AuthModule)
   },
 
-  // === WORKSPACE AUTHENTIFIÉ (À implémenter) ===
+  // === WORKSPACE AUTHENTIFIÉ (Modules Feature) ===
   {
     path: 'workspace',
     canActivate: [AuthGuard],
-    loadComponent: () => import('./pages/not-found/not-found.component').then(m => m.NotFoundComponent)
+    loadChildren: () => import('./features/workspace/workspace.module').then(m => m.WorkspaceModule)
+  },
+
+  // === WINDOWS DYNAMIQUES ===
+  {
+    path: 'windows',
+    canActivate: [AuthGuard],
+    loadChildren: () => import('./features/windows/windows.module').then(m => m.WindowsModule)
   },
 
   // === FEATURES À IMPLÉMENTER PLUS TARD ===
