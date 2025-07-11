@@ -1,6 +1,6 @@
 # 🚀 FusionAI - Plateforme de Développement Moderne
 
-**Une plateforme révolutionnaire combinant le meilleur de Cursor, Emergent.sh et Lovable.dev**
+**Une plateforme révolutionnaire combinant le meilleur methode et pratiques evolutives**
 
 [![Angular](https://img.shields.io/badge/Frontend-Angular%2017+-red.svg)](https://angular.io/)
 [![Node.js](https://img.shields.io/badge/Backend-Node.js%2018+-green.svg)](https://nodejs.org/)
@@ -11,9 +11,9 @@
 
 FusionAI fusionne les meilleures innovations des plateformes de développement les plus avancées :
 
-- **🎨 UI/UX de Cursor** : Interface orientée développeur avec navigation intuitive
-- **⚡ Fenêtres dynamiques d'Emergent.sh** : Système multi-fenêtres interactif
-- **✨ Design épuré de Lovable.dev** : Esthétique moderne et expérience utilisateur premium
+- **🎨 UI/UX moderne** : Interface orientée développeur avec navigation intuitive
+- **⚡ Fenêtres dynamiques** : Système multi-fenêtres interactif
+- **✨ Design épuré** : Esthétique moderne et expérience utilisateur premium
 
 ---
 
@@ -55,6 +55,7 @@ FusionAI/
 ## 🚀 Installation Rapide
 
 ### 📋 Prérequis
+
 - **Node.js** 18+
 - **npm** 9+
 - **Angular CLI** 17+
@@ -80,6 +81,7 @@ npm start
 ```
 
 ### 🌐 URLs de l'Application
+
 - **🔷 Frontend** : http://localhost:4200
 - **🔶 Backend API** : http://localhost:3000
 - **🏥 Health Check** : http://localhost:3000/health
@@ -90,6 +92,7 @@ npm start
 ## 🔷 Frontend (Angular)
 
 ### 🛠️ Commandes Disponibles
+
 ```bash
 cd frontend
 
@@ -103,6 +106,7 @@ npm run e2e               # Tests end-to-end
 ```
 
 ### 🌟 Fonctionnalités Frontend
+
 - ✅ **Navigation adaptative** (connecté/non connecté)
 - ✅ **Système de fenêtres dynamiques** (style Emergent.sh)
 - ✅ **Design moderne** avec Angular Material
@@ -115,12 +119,14 @@ npm run e2e               # Tests end-to-end
 ### 🎨 Interface Utilisateur
 
 #### 👤 Utilisateur Non Connecté
+
 ```
 Header: [FusionAI] [Community] [Entreprise] [Learn] [Shipped] [Se connecter ▼]
 Pages: Home (Hero + Features) + Pages publiques + Footer détaillé
 ```
 
 #### 🔐 Utilisateur Connecté  
+
 ```
 Header: [🏠 Home] [</> Code] [🐙 GitHub] [🗄️ DB] [✉️ Invite] [⬆️ Upgrade] [🚀 Publish] [👤 Menu]
 Workspace: Dashboard + Fenêtres dynamiques + Taskbar
@@ -131,6 +137,7 @@ Workspace: Dashboard + Fenêtres dynamiques + Taskbar
 ## 🔶 Backend (Node.js)
 
 ### 🛠️ Commandes Disponibles
+
 ```bash
 cd backend
 
@@ -145,6 +152,7 @@ npm run lint:fix          # Correction automatique
 ### 🔗 API Endpoints
 
 #### 🔐 Authentification
+
 - `POST /api/auth/login` - Connexion utilisateur
 - `POST /api/auth/register` - Inscription utilisateur
 - `POST /api/auth/verify` - Vérification token
@@ -152,11 +160,13 @@ npm run lint:fix          # Correction automatique
 - `POST /api/auth/logout` - Déconnexion
 
 #### 👤 Gestion Utilisateurs
+
 - `GET /api/users/profile` - Profil utilisateur
 - `PUT /api/users/profile` - Mettre à jour profil
 - `GET /api/users/stats` - Statistiques utilisateur
 
 #### 📂 Gestion Projets
+
 - `GET /api/projects` - Liste des projets
 - `POST /api/projects` - Créer un projet
 - `GET /api/projects/:id` - Détails d'un projet
@@ -164,12 +174,14 @@ npm run lint:fix          # Correction automatique
 - `DELETE /api/projects/:id` - Supprimer projet
 
 #### 🪟 Gestion Fenêtres
+
 - `GET /api/windows` - État des fenêtres
 - `POST /api/windows/state` - Sauvegarder état fenêtre
 - `DELETE /api/windows/:id` - Supprimer fenêtre
 - `DELETE /api/windows` - Effacer toutes les fenêtres
 
 #### 📄 Gestion Fichiers
+
 - `GET /api/files` - Liste des fichiers
 - `POST /api/files/upload` - Upload fichiers
 - `GET /api/files/:id` - Détails fichier
@@ -181,6 +193,7 @@ npm run lint:fix          # Correction automatique
 ## 🔧 Configuration
 
 ### 🔷 Frontend Configuration
+
 ```typescript
 // frontend/src/environments/environment.ts
 export const environment = {
@@ -192,6 +205,7 @@ export const environment = {
 ```
 
 ### 🔶 Backend Configuration
+
 ```bash
 # backend/.env
 PORT=3000
@@ -206,6 +220,7 @@ JWT_EXPIRES_IN=24h
 ## 🚢 Déploiement
 
 ### 🔷 Frontend (Vercel/Netlify)
+
 ```bash
 cd frontend
 npm run build:prod
@@ -218,6 +233,7 @@ npx netlify deploy --prod --dir=dist/fusionai-frontend
 ```
 
 ### 🔶 Backend (Railway/Render/Heroku)
+
 ```bash
 cd backend
 npm run deploy
@@ -228,6 +244,7 @@ docker run -p 3000:3000 fusionai-backend
 ```
 
 ### 🐳 Docker Compose (Full Stack)
+
 ```bash
 # À la racine du projet
 docker-compose up -d
@@ -242,6 +259,7 @@ docker-compose up -d
 ## 📚 Exemples d'Utilisation
 
 ### 🔐 Authentification
+
 ```bash
 # Connexion
 curl -X POST http://localhost:3000/api/auth/login \
@@ -254,6 +272,7 @@ curl -X GET http://localhost:3000/api/users/profile \
 ```
 
 ### 📂 Gestion de Projets
+
 ```bash
 # Créer un projet
 curl -X POST http://localhost:3000/api/projects \
@@ -263,6 +282,7 @@ curl -X POST http://localhost:3000/api/projects \
 ```
 
 ### 📄 Upload de Fichiers
+
 ```bash
 # Upload fichier
 curl -X POST http://localhost:3000/api/files/upload \
@@ -276,6 +296,7 @@ curl -X POST http://localhost:3000/api/files/upload \
 ## 🧪 Tests
 
 ### 🔷 Tests Frontend
+
 ```bash
 cd frontend
 npm test                  # Tests unitaires
@@ -284,6 +305,7 @@ npm run e2e               # Tests end-to-end
 ```
 
 ### 🔶 Tests Backend
+
 ```bash
 cd backend
 npm test                  # Tests API
@@ -296,6 +318,7 @@ npm run test:watch        # Mode watch
 ## 🌟 Fonctionnalités Avancées
 
 ### 🪟 Système de Fenêtres Dynamiques
+
 - **Fenêtres flottantes** redimensionnables
 - **Multi-projets** avec onglets
 - **États persistants** (position, taille)
@@ -303,6 +326,7 @@ npm run test:watch        # Mode watch
 - **Types spécialisés** (Code, GitHub, DB, etc.)
 
 ### 🔐 Sécurité Renforcée
+
 - **JWT Authentication** avec refresh tokens
 - **Rate limiting** (100 req/15min par IP)
 - **Validation** stricte des données
@@ -310,6 +334,7 @@ npm run test:watch        # Mode watch
 - **Helmet.js** pour sécuriser les headers
 
 ### 📱 Responsive Design
+
 - **Mobile-first** approach
 - **Breakpoints** optimisés
 - **Touch-friendly** interfaces
@@ -320,6 +345,7 @@ npm run test:watch        # Mode watch
 ## 🤝 Contribution
 
 ### 🔷 Contribuer au Frontend
+
 ```bash
 cd frontend
 git checkout -b feature/frontend-feature
@@ -330,6 +356,7 @@ git commit -m "feat(frontend): add new component"
 ```
 
 ### 🔶 Contribuer au Backend
+
 ```bash
 cd backend
 git checkout -b feature/backend-feature
@@ -340,6 +367,7 @@ git commit -m "feat(backend): add new endpoint"
 ```
 
 ### 📝 Standards de Code
+
 - **TypeScript** strict mode
 - **ESLint** + **Prettier** pour le formatage
 - **Conventional Commits** pour les messages
@@ -351,18 +379,21 @@ git commit -m "feat(backend): add new endpoint"
 ## 🔮 Roadmap
 
 ### Phase 1 (Actuelle) ✅
+
 - ✅ Architecture frontend/backend séparée
 - ✅ Authentification JWT
 - ✅ Système de fenêtres de base
 - ✅ CRUD projets et fichiers
 
 ### Phase 2 (À venir)
+
 - 🔄 Collaboration temps réel (WebSockets)
 - 🔄 Intégration GitHub avancée
 - 🔄 Éditeur de code intégré
 - 🔄 Base de données PostgreSQL
 
 ### Phase 3 (Futur)
+
 - 🔮 IA intégrée pour assistance code
 - 🔮 Déploiement automatique
 - 🔮 Analytics avancés
@@ -373,12 +404,14 @@ git commit -m "feat(backend): add new endpoint"
 ## 📊 Performance & Métriques
 
 ### 🔷 Frontend
+
 - **Build size** : < 1MB gzippé
 - **First Contentful Paint** : < 1.5s
 - **Time to Interactive** : < 3s
 - **Lighthouse Score** : 95+
 
 ### 🔶 Backend
+
 - **Response time** : < 100ms moyenne
 - **Throughput** : 1000+ req/s
 - **Memory usage** : < 512MB
@@ -389,11 +422,13 @@ git commit -m "feat(backend): add new endpoint"
 ## 💡 Comptes de Test
 
 ### Utilisateur Demo
+
 - **Email** : `demo@fusionai.dev`
 - **Mot de passe** : `password`
 - **Plan** : Pro
 
 ### API Testing
+
 ```bash
 # Health check
 curl http://localhost:3000/health
