@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Emergent-like Builder (MVP)</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="app-header">
+      <div class="brand">Emergent-like</div>
+      <div class="actions">
+        <button id="downloadBtn" class="btn">Télécharger HTML</button>
+        <button id="openBtn" class="btn btn-secondary">Ouvrir l'aperçu</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <section class="panel chat-panel">
+        <h2>Générateur par texte</h2>
+        <div id="chat" class="chat"></div>
+        <form id="promptForm" class="prompt-form">
+          <textarea id="prompt" placeholder="Décris ce que tu veux construire... (ex: Une landing page pour une app de coaching sportif, avec section héros, bénéfices, témoignages, et un CTA)" rows="4"></textarea>
+          <div class="row">
+            <button class="btn btn-primary" type="submit">Générer</button>
+            <button class="btn btn-secondary" type="button" id="resetBtn">Réinitialiser</button>
+          </div>
+        </form>
+        <div class="hints">
+          <div class="hint-title">Exemples</div>
+          <ul>
+            <li>Landing page SaaS avec héros, features (3), pricing (3 plans), FAQ, footer</li>
+            <li>Portfolio créatif avec grille de projets, à propos et contact</li>
+            <li>Blog minimal avec liste d'articles et page article</li>
+            <li>Dashboard simple: cartes KPI, tableau, et filtre</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="panel preview-panel">
+        <h2>Aperçu</h2>
+        <iframe id="preview" title="Aperçu" sandbox="allow-same-origin allow-forms allow-scripts"></iframe>
+        <details class="code-details">
+          <summary>Voir le code généré</summary>
+          <pre id="codeOut" class="code"></pre>
+        </details>
+      </section>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
