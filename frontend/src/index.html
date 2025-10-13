@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>EduChain Credentials - Certification Académique Décentralisée</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Révolutionnez la certification académique avec la blockchain Hedera Hashgraph. Des diplômes infalsifiables, vérifiables et détenus par les étudiants.">
+  <meta name="keywords" content="blockchain, certification, diplôme, hedera, hashgraph, éducation, nft, décentralisé">
+  <meta name="author" content="EduChain Credentials">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://edu-chain.dev/">
+  <meta property="og:title" content="EduChain Credentials - Certification Académique Décentralisée">
+  <meta property="og:description" content="Révolutionnez la certification académique avec la blockchain Hedera Hashgraph. Des diplômes infalsifiables, vérifiables et détenus par les étudiants.">
+  <meta property="og:image" content="https://edu-chain.dev/assets/og-image.jpg">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://edu-chain.dev/">
+  <meta property="twitter:title" content="EduChain Credentials - Certification Académique Décentralisée">
+  <meta property="twitter:description" content="Révolutionnez la certification académique avec la blockchain Hedera Hashgraph. Des diplômes infalsifiables, vérifiables et détenus par les étudiants.">
+  <meta property="twitter:image" content="https://edu-chain.dev/assets/twitter-image.jpg">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+  <link rel="manifest" href="assets/site.webmanifest">
+
+  <!-- Preconnect to external domains -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://ipfs.io">
+  <link rel="preconnect" href="https://testnet.hashscan.io">
+  <link rel="preconnect" href="https://hashscan.io">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <!-- Theme Color -->
+  <meta name="theme-color" content="#667eea">
+  <meta name="msapplication-TileColor" content="#667eea">
+  <meta name="msapplication-config" content="assets/browserconfig.xml">
+
+  <!-- Security Headers -->
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta http-equiv="X-Frame-Options" content="DENY">
+  <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+  <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+
+  <!-- PWA Meta Tags -->
+  <meta name="application-name" content="EduChain Credentials">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="EduChain">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="msapplication-tap-highlight" content="no">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "EduChain Credentials",
+    "description": "Certification académique décentralisée via Hedera Hashgraph",
+    "url": "https://edu-chain.dev",
+    "applicationCategory": "EducationApplication",
+    "operatingSystem": "Web Browser",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "creator": {
+      "@type": "Organization",
+      "name": "EduChain Team",
+      "url": "https://edu-chain.dev"
+    }
+  }
+  </script>
+</head>
+<body>
+  <app-root>
+    <!-- Loading Screen -->
+    <div style="
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-family: 'Roboto', sans-serif;
+      z-index: 9999;
+    ">
+      <div style="
+        width: 60px;
+        height: 60px;
+        border: 4px solid rgba(255, 255, 255, 0.3);
+        border-top: 4px solid white;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        margin-bottom: 20px;
+      "></div>
+      <h2 style="margin: 0; font-weight: 300;">EduChain Credentials</h2>
+      <p style="margin: 10px 0 0 0; opacity: 0.8; font-size: 14px;">Chargement...</p>
+    </div>
+    
+    <style>
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+    </style>
+  </app-root>
+  
+  <!-- Fallback for users without JavaScript -->
+  <noscript>
+    <div style="
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #f8f9fa;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Roboto', sans-serif;
+      text-align: center;
+      padding: 20px;
+    ">
+      <h1 style="color: #667eea; margin-bottom: 20px;">🎓 EduChain Credentials</h1>
+      <p style="color: #666; margin-bottom: 20px;">
+        JavaScript est requis pour utiliser cette application.
+      </p>
+      <p style="color: #999; font-size: 14px;">
+        Veuillez activer JavaScript dans votre navigateur et recharger la page.
+      </p>
+    </div>
+  </noscript>
+</body>
+</html>
