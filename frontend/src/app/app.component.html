@@ -1,0 +1,78 @@
+<div class="app-container">
+  <!-- Header -->
+  <header class="app-header">
+    <div class="container">
+      <div class="header-content">
+        <div class="logo">
+          <h1>🎓 EduChain Credentials</h1>
+        </div>
+        <nav class="main-nav">
+          <a routerLink="/" routerLinkActive="active">Accueil</a>
+          <a routerLink="/verify" routerLinkActive="active">Vérifier</a>
+          <a routerLink="/institution" routerLinkActive="active">Institution</a>
+          <a routerLink="/about" routerLinkActive="active">À Propos</a>
+        </nav>
+        <div class="wallet-section">
+          <div class="wallet-status" *ngIf="isWalletConnected">
+            <mat-icon color="accent">account_balance_wallet</mat-icon>
+            <span>Wallet connecté</span>
+          </div>
+          <button 
+            mat-button 
+            color="primary"
+            *ngIf="!isWalletConnected"
+            (click)="connectWallet()">
+            <mat-icon>account_balance_wallet</mat-icon>
+            Connecter Wallet
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="app-main">
+    <router-outlet></router-outlet>
+  </main>
+
+  <!-- Footer -->
+  <footer class="app-footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>EduChain Credentials</h3>
+          <p>Certification académique décentralisée via Hedera Hashgraph</p>
+        </div>
+        <div class="footer-section">
+          <h4>Liens Utiles</h4>
+          <ul>
+            <li><a routerLink="/verify">Vérifier un Certificat</a></li>
+            <li><a routerLink="/institution">Espace Institution</a></li>
+            <li><a href="/docs">Documentation</a></li>
+            <li><a href="/api">API</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="mailto:support@edu-chain.dev">support@edu-chain.dev</a></li>
+            <li><a href="/help">Centre d'aide</a></li>
+            <li><a href="/contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Réseaux Sociaux</h4>
+          <div class="social-links">
+            <a href="#" mat-icon-button><mat-icon>twitter</mat-icon></a>
+            <a href="#" mat-icon-button><mat-icon>linkedin</mat-icon></a>
+            <a href="#" mat-icon-button><mat-icon>github</mat-icon></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 EduChain Credentials. Tous droits réservés.</p>
+        <p>Propulsé par <a href="https://hedera.com" target="_blank">Hedera Hashgraph</a></p>
+      </div>
+    </div>
+  </footer>
+</div>

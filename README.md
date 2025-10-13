@@ -1,32 +1,83 @@
-# 🚀 Platform X - Architecture Séparée
+# 🎓 EduChain Credentials - Hashgraph Hackathon
 
-**Une plateforme de développement moderne inspirée du meilleur de Cursor, Emergent.sh et Lovable.dev**
+**Une solution de certification académique décentralisée via Hedera Hashgraph**
 
+[![Hedera](https://img.shields.io/badge/Blockchain-Hedera%20Hashgraph-00D4AA.svg)](https://hedera.com/)
 [![Angular](https://img.shields.io/badge/Frontend-Angular%2017+-red.svg)](https://angular.io/)
 [![Node.js](https://img.shields.io/badge/Backend-Node.js%2018+-green.svg)](https://nodejs.org/)
-[![TypeScript](https://img.shields.io/badge/Language-TypeScript-blue.svg)](https://www.typescriptlang.org/)
+[![IPFS](https://img.shields.io/badge/Storage-IPFS-65C2CB.svg)](https://ipfs.io/)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-## 🏗️ **Architecture Séparée**
+## 🧠 **Résumé du projet**
 
-Cette version de Platform X utilise une **architecture microservices** avec deux projets indépendants :
+**EduChain Credentials** révolutionne la certification académique en la rendant infalsifiable, vérifiable et détenue par l'étudiant. Grâce à Hedera Hashgraph et IPFS, chaque diplôme devient un NFT unique, consultable publiquement via HashScan.
+
+### 🎯 **Objectifs**
+- ✅ **Émission de certificats** par les institutions via NFTs
+- ✅ **Possession décentralisée** par les étudiants dans leur wallet
+- ✅ **Vérification publique** par les recruteurs via HashScan
+- ✅ **Lutte contre la fraude** académique
+- ✅ **Modernisation** du système éducatif
+
+---
+
+## 🏗️ **Architecture technique**
+
+### 📁 Structure du projet
 
 ```
-platform-x/
-├── 📁 platform-x-frontend/     # Application Angular
-│   ├── 📁 src/app/              # Code source Angular
-│   ├── 📄 package.json          # Dépendances frontend
-│   └── 📄 angular.json          # Configuration Angular
+edu-chain-credentials/
+├── frontend/                    # Application Angular
+│   ├── src/app/
+│   │   ├── pages/              # Home, Dashboard, Institution
+│   │   ├── services/           # Hedera, IPFS, HashConnect
+│   │   ├── models/             # Certificat, Utilisateur, Institution
+│   │   └── components/         # Composants réutilisables
+│   ├── package.json
+│   └── angular.json
 │
-├── 📁 platform-x-backend/      # API Node.js
-│   ├── 📁 src/                  # Code source Node.js
-│   │   ├── 📄 server.js         # Serveur principal
-│   │   └── 📁 routes/           # Routes API
-│   └── 📄 package.json          # Dépendances backend
+├── backend/                     # API Node.js + Express
+│   ├── src/
+│   │   ├── controllers/        # Logique métier
+│   │   ├── routes/             # API REST
+│   │   ├── services/           # Hedera SDK, IPFS
+│   │   ├── models/             # Schémas de données
+│   │   └── server.js           # Entrée serveur
+│   └── package.json
 │
-├── 📄 README.md                 # Documentation principale
-└── 📄 LICENSE                   # Licence MIT
+├── smart-contracts/             # Contrats de gouvernance
+│   ├── contracts/
+│   └── scripts/
+│
+├── .env.example                 # Configuration d'environnement
+├── docker-compose.yml           # Déploiement local
+└── README.md                    # Documentation
 ```
+
+---
+
+## 🔗 **Flux fonctionnel**
+
+```mermaid
+graph TD
+    A[Institution] -->|Remplit formulaire| B[Backend API]
+    B -->|Encode métadonnées| C[IPFS Storage]
+    C -->|Retourne hash| B
+    B -->|Mint NFT| D[Hedera HTS]
+    D -->|Token ID| B
+    B -->|Transfert NFT| E[Wallet Étudiant]
+    E -->|HashConnect| F[Frontend Angular]
+    G[Recruteur] -->|Vérification| H[HashScan]
+    H -->|Token ID| D
+```
+
+### 🔄 **Étapes détaillées**
+
+1. **🏫 Institution** : Se connecte et remplit un formulaire de certification
+2. **⚙️ Backend** : Encode les métadonnées et les stocke sur IPFS
+3. **🪙 Mint NFT** : Crée un NFT unique via Hedera HTS avec le hash IPFS
+4. **📱 Transfert** : Envoie le NFT vers le wallet de l'étudiant via HashConnect
+5. **✅ Vérification** : Le recruteur peut vérifier le certificat via HashScan
 
 ---
 
@@ -36,21 +87,26 @@ platform-x/
 - **Node.js** 18+
 - **npm** 9+
 - **Angular CLI** 17+
+- **Wallet HashPack** (pour les tests)
 
 ### ⚡ **Installation Express**
 
 ```bash
 # 1. Cloner le repository
-git clone https://github.com/your-org/platform-x.git
-cd platform-x
+git clone https://github.com/your-org/edu-chain-credentials.git
+cd edu-chain-credentials
 
-# 2. Backend - Installer et démarrer
-cd platform-x-backend
+# 2. Configuration environnement
+cp .env.example .env
+# Éditer .env avec vos clés Hedera et IPFS
+
+# 3. Backend - Installer et démarrer
+cd backend
 npm install
 npm run dev
 
-# 3. Frontend - Installer et démarrer (nouveau terminal)
-cd ../platform-x-frontend
+# 4. Frontend - Installer et démarrer (nouveau terminal)
+cd ../frontend
 npm install
 npm start
 ```
@@ -62,301 +118,186 @@ npm start
 
 ---
 
-## 📁 **Détails des Projets**
+## 🧪 **Démo technique**
 
-### 🔷 **Frontend (Angular)**
-```bash
-cd platform-x-frontend
+### ✅ **Connexion HashConnect (Angular)**
 
-# Commandes disponibles
-npm start                # Serveur de développement (port 4200)
-npm run build            # Build de production
-npm run build:prod       # Build optimisé pour production
-npm test                 # Tests unitaires
-npm run test:coverage    # Tests avec couverture de code
-npm run lint             # Vérification du code
-```
-
-**Fonctionnalités Frontend :**
-- ✅ Navigation adaptative (connecté/non connecté)
-- ✅ Système de fenêtres dynamiques (style Emergent.sh)
-- ✅ Design moderne avec Angular Material
-- ✅ Pages publiques (Community, Entreprise, Learn, Shipped)
-- ✅ Workspace authentifié avec dashboard
-- ✅ Footer structuré (style Lovable.dev)
-
-### 🔶 **Backend (Node.js)**
-```bash
-cd platform-x-backend
-
-# Commandes disponibles
-npm start                # Serveur production (port 3000)
-npm run dev              # Serveur développement avec nodemon
-npm test                 # Tests API
-npm run test:coverage    # Tests avec couverture
-npm run lint             # Vérification du code
-```
-
-**API Endpoints :**
-- 🔐 `/api/auth/*` - Authentification (login, register, verify)
-- 👤 `/api/users/*` - Gestion utilisateurs
-- 📂 `/api/projects/*` - Gestion des projets
-- 🪟 `/api/windows/*` - État des fenêtres
-- 📄 `/api/files/*` - Gestion des fichiers
-
----
-
-## 🔧 **Configuration**
-
-### 🔷 **Frontend**
 ```typescript
-// platform-x-frontend/src/environments/environment.ts
-export const environment = {
-  production: false,
-  apiUrl: 'http://localhost:3000/api',
-  appName: 'Platform X',
-  version: '1.0.0'
-};
+// frontend/src/app/services/hashconnect.service.ts
+const hashconnect = new HashConnect();
+const initData = await hashconnect.init({
+  name: "EduChain Credentials",
+  description: "Certifications académiques décentralisées",
+  icon: "https://edu-chain.dev/icon.png",
+  url: "https://edu-chain.dev"
+});
+
+// Connexion wallet
+const pairingData = await hashconnect.openPairingModal();
 ```
 
-### 🔶 **Backend**
-```bash
-# platform-x-backend/.env
-PORT=3000
-NODE_ENV=development
-FRONTEND_URL=http://localhost:4200
-JWT_SECRET=your-super-secure-secret-here
-JWT_EXPIRES_IN=24h
+### ✅ **API Mint NFT (Node.js)**
+
+```javascript
+// backend/src/services/hedera.service.js
+const metadata = {
+  name: "Benewende Pierre",
+  degree: "Master Intelligence Artificielle",
+  institution: "Université de Ouagadougou",
+  date: "2025-01-13",
+  gpa: "3.8/4.0",
+  description: "Diplôme de Master en IA avec mention Très Bien"
+};
+
+const ipfsUrl = await ipfsService.uploadMetadata(metadata);
+const tokenId = await hederaService.createNFT(
+  "EduCert", 
+  "EDU", 
+  Buffer.from(ipfsUrl)
+);
+```
+
+### ✅ **Vérification HashScan**
+
+```typescript
+// Vérification publique d'un certificat
+const tokenId = "0.0.1234567";
+const hashScanUrl = `https://hashscan.io/testnet/token/${tokenId}`;
+// Le recruteur peut voir toutes les métadonnées publiquement
 ```
 
 ---
 
-## 🚢 **Déploiement Séparé**
+## 🎤 **Pitch de présentation**
 
-### ☁️ **Frontend (Vercel/Netlify)**
-```bash
-cd platform-x-frontend
+> *"EduChain Credentials révolutionne la certification académique en la rendant infalsifiable, vérifiable et détenue par l'étudiant. Grâce à Hedera Hashgraph et IPFS, chaque diplôme devient un NFT unique, consultable publiquement. C'est une solution simple, rapide et sécurisée pour lutter contre la fraude et moderniser l'éducation."*
 
-# Build de production
-npm run build:prod
-
-# Déployer sur Vercel
-npx vercel --prod
-
-# Ou sur Netlify
-npx netlify deploy --prod --dir=dist/platform-x-frontend
-```
-
-### 🖥️ **Backend (Railway/Render/Heroku)**
-```bash
-cd platform-x-backend
-
-# Build et démarrer
-npm run deploy
-
-# Ou avec Docker
-docker build -t platform-x-backend .
-docker run -p 3000:3000 platform-x-backend
-```
-
-### 🐳 **Docker Compose (Full Stack)**
-```yaml
-# docker-compose.yml
-version: '3.8'
-services:
-  frontend:
-    build: ./platform-x-frontend
-    ports:
-      - "4200:4200"
-    environment:
-      - API_URL=http://backend:3000/api
-  
-  backend:
-    build: ./platform-x-backend
-    ports:
-      - "3000:3000"
-    environment:
-      - FRONTEND_URL=http://frontend:4200
-      - JWT_SECRET=production-secret-key
-```
+### 🏆 **Avantages concurrentiels**
+- **🔒 Sécurité maximale** : Blockchain Hedera (3 secondes de finalité)
+- **💰 Coûts réduits** : Frais de transaction minimes
+- **🌍 Écologique** : Consensus proof-of-stake
+- **🔍 Transparence** : Vérification publique via HashScan
+- **📱 Accessibilité** : Interface intuitive pour tous
 
 ---
 
 ## 📚 **Documentation API**
 
-### 🔐 **Authentification**
+### 🔐 **Authentification Institution**
+
 ```bash
-# Login
-POST http://localhost:3000/api/auth/login
+# Login Institution
+POST http://localhost:3000/api/auth/institution/login
 Content-Type: application/json
 
 {
-  "email": "demo@platform-x.dev",
-  "password": "password"
-}
-
-# Register
-POST http://localhost:3000/api/auth/register
-Content-Type: application/json
-
-{
-  "email": "user@example.com",
-  "password": "SecurePass123",
-  "name": "John Doe"
+  "email": "admin@univ-ouaga.bf",
+  "password": "securePassword123"
 }
 ```
 
-### 👤 **Gestion Utilisateur**
-```bash
-# Profil utilisateur
-GET http://localhost:3000/api/users/profile
-Authorization: Bearer <your-jwt-token>
+### 🎓 **Émission de Certificat**
 
-# Mettre à jour le profil
-PUT http://localhost:3000/api/users/profile
-Authorization: Bearer <your-jwt-token>
+```bash
+# Créer un certificat
+POST http://localhost:3000/api/certificates/create
+Authorization: Bearer <institution-token>
 Content-Type: application/json
 
 {
-  "name": "New Name",
-  "preferences": {
-    "theme": "dark",
-    "language": "fr"
-  }
+  "studentName": "Benewende Pierre",
+  "studentEmail": "benewende@student.bf",
+  "degree": "Master Intelligence Artificielle",
+  "institution": "Université de Ouagadougou",
+  "graduationDate": "2025-01-13",
+  "gpa": "3.8",
+  "description": "Diplôme avec mention Très Bien"
 }
 ```
 
-### 📂 **Gestion des Projets**
+### 🔍 **Vérification Certificat**
+
 ```bash
-# Liste des projets
-GET http://localhost:3000/api/projects
-Authorization: Bearer <your-jwt-token>
-
-# Créer un projet
-POST http://localhost:3000/api/projects
-Authorization: Bearer <your-jwt-token>
-Content-Type: application/json
-
-{
-  "name": "Mon Nouveau Projet",
-  "description": "Description du projet",
-  "isPublic": false,
-  "technologies": ["Angular", "Node.js"]
-}
+# Vérifier un certificat
+GET http://localhost:3000/api/certificates/verify/0.0.1234567
 ```
 
 ---
 
-## 🔄 **Communication Frontend ↔ Backend**
+## 🛠️ **Technologies utilisées**
 
-### 🔷 **Service Angular (Frontend)**
-```typescript
-// platform-x-frontend/src/app/services/api.service.ts
-@Injectable({
-  providedIn: 'root'
-})
-export class ApiService {
-  private apiUrl = environment.apiUrl;
+### 🔷 **Frontend (Angular)**
+- **Angular 17+** : Framework principal
+- **Angular Material** : Composants UI
+- **HashConnect** : Intégration wallet Hedera
+- **RxJS** : Gestion des observables
+- **TypeScript** : Langage de développement
 
-  constructor(private http: HttpClient) {}
+### 🔶 **Backend (Node.js)**
+- **Express.js** : Framework web
+- **Hedera SDK** : Intégration blockchain
+- **IPFS** : Stockage décentralisé
+- **MongoDB** : Base de données
+- **JWT** : Authentification
 
-  login(credentials: LoginCredentials): Observable<AuthResponse> {
-    return this.http.post<AuthResponse>(`${this.apiUrl}/auth/login`, credentials);
-  }
+### ⛓️ **Blockchain (Hedera)**
+- **Hedera Token Service (HTS)** : Création de NFTs
+- **Hedera Consensus Service** : Consensus
+- **HashConnect** : Connexion wallet
+- **HashScan** : Explorateur blockchain
 
-  getProjects(): Observable<ProjectsResponse> {
-    return this.http.get<ProjectsResponse>(`${this.apiUrl}/projects`);
-  }
-}
+---
+
+## 🚢 **Déploiement**
+
+### 🐳 **Docker Compose (Recommandé)**
+
+```bash
+# Démarrage complet
+docker-compose up -d
+
+# Vérification des services
+docker-compose ps
 ```
 
-### 🔶 **CORS Configuration (Backend)**
-```javascript
-// platform-x-backend/src/server.js
-app.use(cors({
-  origin: process.env.FRONTEND_URL || 'http://localhost:4200',
-  credentials: true,
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  allowedHeaders: ['Content-Type', 'Authorization']
-}));
+### ☁️ **Déploiement Cloud**
+
+```bash
+# Frontend (Vercel)
+cd frontend
+npm run build
+npx vercel --prod
+
+# Backend (Railway)
+cd backend
+npm run deploy
 ```
 
 ---
 
 ## 🧪 **Tests**
 
-### 🔷 **Tests Frontend**
 ```bash
-cd platform-x-frontend
-
-# Tests unitaires
+# Tests Frontend
+cd frontend
 npm test
-
-# Tests avec couverture
-npm run test:coverage
-
-# Tests e2e
 npm run e2e
-```
 
-### 🔶 **Tests Backend**
-```bash
-cd platform-x-backend
-
-# Tests API
+# Tests Backend
+cd backend
 npm test
-
-# Tests avec couverture
 npm run test:coverage
-
-# Tests d'intégration
-npm run test:integration
 ```
-
----
-
-## 🌟 **Avantages de l'Architecture Séparée**
-
-### ✅ **Avantages**
-- **🔄 Déploiement indépendant** des services
-- **📈 Scalabilité** différenciée (frontend vs backend)
-- **👥 Équipes dédiées** (frontend et backend)
-- **🔧 Technologies spécialisées** pour chaque couche
-- **🚀 CI/CD optimisé** par service
-- **🛡️ Sécurité renforcée** par séparation
-
-### 📊 **Comparaison avec Monorepo**
-| Aspect | Architecture Séparée | Monorepo |
-|--------|---------------------|----------|
-| **Déploiement** | ✅ Indépendant | ❌ Couplé |
-| **Équipes** | ✅ Spécialisées | ⚠️ Partagées |
-| **Performance** | ✅ Optimisée | ⚠️ Moyenne |
-| **Complexité** | ⚠️ Plus élevée | ✅ Simple |
-| **Maintenance** | ✅ Modulaire | ❌ Monolithique |
 
 ---
 
 ## 🤝 **Contribution**
 
-### 🔷 **Contribuer au Frontend**
-```bash
-cd platform-x-frontend
-git checkout -b feature/frontend-feature
-# Faire vos modifications
-npm run lint
-npm test
-git commit -m "feat(frontend): add new component"
-```
-
-### 🔶 **Contribuer au Backend**
-```bash
-cd platform-x-backend
-git checkout -b feature/backend-feature
-# Faire vos modifications
-npm run lint
-npm test
-git commit -m "feat(backend): add new endpoint"
-```
+1. Fork le projet
+2. Créer une branche feature (`git checkout -b feature/AmazingFeature`)
+3. Commit vos changements (`git commit -m 'Add some AmazingFeature'`)
+4. Push vers la branche (`git push origin feature/AmazingFeature`)
+5. Ouvrir une Pull Request
 
 ---
 
@@ -368,17 +309,19 @@ Ce projet est sous licence MIT. Voir [LICENSE](LICENSE) pour plus de détails.
 
 ## 🙏 **Remerciements**
 
-Merci aux équipes de **Cursor**, **Emergent.sh** et **Lovable.dev** pour leur inspiration.
+- **Hedera Hashgraph** pour la blockchain
+- **IPFS** pour le stockage décentralisé
+- **Angular** pour le framework frontend
+- **Node.js** pour le backend
 
 ---
 
 ## 📞 **Support**
 
-- 📧 **Email** : support@platform-x.dev
-- 💬 **Discord** : [Platform X Community](https://discord.gg/platform-x)
-- 🐛 **Issues Frontend** : [GitHub Issues Frontend](https://github.com/your-org/platform-x/issues?labels=frontend)
-- 🐛 **Issues Backend** : [GitHub Issues Backend](https://github.com/your-org/platform-x/issues?labels=backend)
+- 📧 **Email** : support@edu-chain.dev
+- 💬 **Discord** : [EduChain Community](https://discord.gg/edu-chain)
+- 🐛 **Issues** : [GitHub Issues](https://github.com/your-org/edu-chain-credentials/issues)
 
 ---
 
-**🚀 Prêt à révolutionner votre expérience de développement avec une architecture moderne et séparée !**
+**🎓 Prêt à révolutionner l'éducation avec la blockchain !**

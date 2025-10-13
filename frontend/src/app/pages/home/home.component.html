@@ -1,0 +1,212 @@
+<!-- Hero Section -->
+<section class="hero-section">
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-text">
+        <h1 class="hero-title">
+          🎓 <span class="gradient-text">EduChain Credentials</span>
+        </h1>
+        <p class="hero-subtitle">
+          Révolutionnez la certification académique avec la blockchain Hedera Hashgraph.
+          Des diplômes infalsifiables, vérifiables et détenus par les étudiants.
+        </p>
+        <div class="hero-actions">
+          <button 
+            mat-raised-button 
+            color="primary" 
+            class="cta-button"
+            (click)="navigateToVerification()">
+            <mat-icon>verified</mat-icon>
+            Vérifier un Certificat
+          </button>
+          <button 
+            mat-stroked-button 
+            color="primary"
+            class="secondary-button"
+            (click)="navigateToInstitutionLogin()">
+            <mat-icon>school</mat-icon>
+            Espace Institution
+          </button>
+        </div>
+        <div class="wallet-status" *ngIf="isWalletConnected">
+          <mat-icon color="accent">account_balance_wallet</mat-icon>
+          <span>Wallet connecté</span>
+        </div>
+        <div class="wallet-status" *ngIf="!isWalletConnected">
+          <button 
+            mat-button 
+            color="accent"
+            (click)="connectWallet()">
+            <mat-icon>account_balance_wallet</mat-icon>
+            Connecter Wallet
+          </button>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="certificate-card">
+          <div class="certificate-header">
+            <h3>Certificat Académique</h3>
+            <div class="certificate-badge">
+              <mat-icon>verified</mat-icon>
+              <span>Vérifié</span>
+            </div>
+          </div>
+          <div class="certificate-content">
+            <div class="student-info">
+              <h4>Marie Kouassi</h4>
+              <p>Master Intelligence Artificielle</p>
+              <p>Université de Ouagadougou</p>
+            </div>
+            <div class="certificate-qr">
+              <div class="qr-placeholder">
+                <mat-icon>qr_code</mat-icon>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Features Section -->
+<section class="features-section">
+  <div class="container">
+    <h2 class="section-title">Pourquoi EduChain Credentials ?</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">
+          <mat-icon>security</mat-icon>
+        </div>
+        <h3>Sécurité Maximale</h3>
+        <p>Blockchain Hedera avec consensus proof-of-stake. Finalité en 3 secondes.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <mat-icon>verified_user</mat-icon>
+        </div>
+        <h3>Vérification Publique</h3>
+        <p>Chaque certificat est vérifiable publiquement via HashScan.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <mat-icon>account_balance_wallet</mat-icon>
+        </div>
+        <h3>Possession Décentralisée</h3>
+        <p>Les étudiants possèdent leurs certificats dans leur wallet.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <mat-icon>eco</mat-icon>
+        </div>
+        <h3>Écologique</h3>
+        <p>Consensus économe en énergie, respectueux de l'environnement.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <mat-icon>speed</mat-icon>
+        </div>
+        <h3>Rapide & Efficace</h3>
+        <p>Émission et vérification de certificats en quelques secondes.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <mat-icon>attach_money</mat-icon>
+        </div>
+        <h3>Coûts Réduits</h3>
+        <p>Frais de transaction minimes grâce à Hedera Hashgraph.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Stats Section -->
+<section class="stats-section">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-item">
+        <div class="stat-number">{{ stats.totalCertificates | number }}</div>
+        <div class="stat-label">Certificats Émis</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">{{ stats.institutions }}</div>
+        <div class="stat-label">Institutions</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">{{ stats.students | number }}</div>
+        <div class="stat-label">Étudiants</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">{{ stats.verified }}%</div>
+        <div class="stat-label">Taux de Vérification</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Recent Certificates Section -->
+<section class="recent-certificates-section">
+  <div class="container">
+    <h2 class="section-title">Certificats Récents</h2>
+    <div class="certificates-grid">
+      <div 
+        class="certificate-item" 
+        *ngFor="let certificate of recentCertificates"
+        (click)="navigateToCertificate(certificate.certificateId)">
+        <div class="certificate-header">
+          <h4>{{ certificate.student.name }}</h4>
+          <div class="certificate-status">
+            <mat-chip 
+              [color]="getStatusColor(certificate.status)"
+              [selected]="true">
+              {{ getStatusText(certificate.status) }}
+            </mat-chip>
+          </div>
+        </div>
+        <div class="certificate-details">
+          <p class="degree">{{ certificate.academic.degree }}</p>
+          <p class="institution">{{ certificate.institution.name }}</p>
+          <p class="date">
+            <mat-icon>event</mat-icon>
+            {{ certificate.academic.graduationDate | date:'dd/MM/yyyy' }}
+          </p>
+        </div>
+        <div class="certificate-actions">
+          <button mat-icon-button color="primary">
+            <mat-icon>visibility</mat-icon>
+          </button>
+          <button mat-icon-button color="accent">
+            <mat-icon>share</mat-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta-section">
+  <div class="container">
+    <div class="cta-content">
+      <h2>Prêt à révolutionner l'éducation ?</h2>
+      <p>Rejoignez les institutions qui font confiance à EduChain Credentials pour leurs certifications.</p>
+      <div class="cta-actions">
+        <button 
+          mat-raised-button 
+          color="primary" 
+          class="cta-button"
+          (click)="navigateToInstitutionLogin()">
+          <mat-icon>school</mat-icon>
+          Commencer Maintenant
+        </button>
+        <button 
+          mat-stroked-button 
+          color="primary"
+          (click)="navigateToVerification()">
+          <mat-icon>search</mat-icon>
+          Vérifier un Certificat
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
