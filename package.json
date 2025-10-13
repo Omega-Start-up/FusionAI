@@ -1,0 +1,51 @@
+{
+  "name": "educhain-credentials",
+  "version": "1.0.0",
+  "description": "Certification académique décentralisée sur Hedera Hashgraph",
+  "main": "backend/src/server.js",
+  "scripts": {
+    "setup": "./scripts/setup.sh --full",
+    "setup:check": "./scripts/setup.sh --check",
+    "setup:install": "./scripts/setup.sh --install",
+    "dev": "cd backend && npm run dev",
+    "start": "cd backend && npm start",
+    "test": "cd backend && npm test",
+    "lint": "cd backend && npm run lint",
+    "build": "cd backend && npm run build",
+    "deploy": "cd backend && npm run deploy",
+    "health": "curl -s http://localhost:3000/api/health | jq ."
+  },
+  "keywords": [
+    "hedera",
+    "hashgraph",
+    "nft",
+    "blockchain",
+    "education",
+    "certification",
+    "ipfs",
+    "decentralized",
+    "academic",
+    "diploma",
+    "hackathon"
+  ],
+  "author": {
+    "name": "Benewende Pierre",
+    "email": "benewende.pierre@example.com"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-org/educhain-credentials.git"
+  },
+  "bugs": {
+    "url": "https://github.com/your-org/educhain-credentials/issues"
+  },
+  "homepage": "https://github.com/your-org/educhain-credentials#readme",
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
+  "devDependencies": {
+    "jq": "^1.7.3"
+  }
+}
